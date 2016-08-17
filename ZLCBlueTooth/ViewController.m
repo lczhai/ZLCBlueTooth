@@ -22,6 +22,19 @@
 	NSMutableArray *dataSource;
 	NSMutableArray *advertisementsDataSource;
 }
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	
+	[dataSource removeAllObjects];
+	[advertisementsDataSource removeAllObjects];
+	[blueListTableview reloadData];
+}
+
+
+
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
     self.title                             = @"Bluetooth";
@@ -37,7 +50,7 @@
 	
 	
 	[BLEManager sharedManagerWithDelegate:self];    //遵循蓝牙代理
-    [BLEManager sharedManager].delegate  =self;
+//    [BLEManager sharedManager].delegate  =self;
 	
 	
 }

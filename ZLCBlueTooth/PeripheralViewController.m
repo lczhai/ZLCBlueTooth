@@ -49,7 +49,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[[BLEManager sharedManager] connectingPeripheral:periperal];//连接设备
+	[SVProgressHUD show];
 }
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[[BLEManager sharedManager] disconnectPeripheral:periperal];//断开蓝牙
+}
+
 
 # pragma mark - BLEManager Methods
 - (void)BLEManagerDisabledDelegate {
@@ -59,6 +65,9 @@
 #pragma mark --蓝牙连接完成
 - (void)BLEManagerDidConnectPeripheral:(CBPeripheral *)peripheral
 {
+	
+	[SVProgressHUD dismiss];
+	
 	CBPeripheral *connctedPeripheral = peripheral;//当前连接成功的设备
 	[SVProgressHUD showSuccessWithStatus:@"连接成功"];
 	
