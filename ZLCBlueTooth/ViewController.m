@@ -24,13 +24,6 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	
-	[dataSource removeAllObjects];
-	[advertisementsDataSource removeAllObjects];
-	[blueListTableview reloadData];
-}
 
 
 
