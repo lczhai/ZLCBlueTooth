@@ -19,7 +19,7 @@
 - (void)BLEManagerDisabledDelegate;
 
 @optional
-- (void)BLEManagerReceiveAllPeripherals:(NSMutableArray *) peripherals;
+- (void)BLEManagerReceiveAllPeripherals:(NSMutableArray *) peripherals andAdvertisements:(NSMutableArray *)advertisements;
 - (void)BLEManagerReceiveAllService:(CBService *) service;
 - (void)BLEManagerDidConnectPeripheral:(CBPeripheral *)peripheral;
 - (void)BLEManagerDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error;
@@ -33,6 +33,7 @@
 }
 
 @property (strong,nonatomic) NSMutableArray *discoveredPeripherals;
+@property (strong,nonatomic) NSMutableArray *discoveredAdvertisements;
 
 @property (assign,nonatomic) id<BLEManagerDelegate> delegate;
 

@@ -171,6 +171,8 @@
 #pragma mark -- 按钮点击事件
 - (void)writebtn_Click:(UIButton *)sender
 {
+	
+	
 	[self.view endEditing:YES];
 	NSData *sendData  =  [contentTF.text dataUsingEncoding:NSUTF8StringEncoding];//数据
 	[[BLEManager sharedManager] setValue:sendData forServiceUUID:serviceTF.text andCharacteristicUUID:characteristicTF.text withPeripheral:periperal];//发送消息到设备
@@ -284,6 +286,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	
 	CBService *service = thisServices[indexPath.section];//获取到服务
 	CBCharacteristic *characteristic = service.characteristics[indexPath.row];
 	characteristicTF.text = characteristic.UUID.UUIDString;

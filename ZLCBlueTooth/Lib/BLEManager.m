@@ -17,6 +17,7 @@
 @implementation BLEManager
 
 @synthesize discoveredPeripherals;
+@synthesize discoveredAdvertisements;
 
 @synthesize delegate;
 
@@ -69,7 +70,8 @@ NSString *currentCharacteristic = nil;
     {
         isConnecting = NO;
         self.delegate = delegate;
-        discoveredPeripherals = [[NSMutableArray alloc] initWithObjects:nil];
+        discoveredPeripherals = [[NSMutableArray alloc] init];
+		discoveredAdvertisements = [[NSMutableArray alloc] init];
     }
     return  self;
 }
@@ -102,7 +104,20 @@ NSString *currentCharacteristic = nil;
             return;
         }
     }
+	
+	
+	
+	    //查看数组中是否已经包含advertisementData
+		if ([discoveredAdvertisements containsObject:advertisementData]) {
+			return;
+		}
+		
+	
+	
+	
+	
     [self.discoveredPeripherals addObject:peripheral];
+	[self.discoveredAdvertisements addObject:advertisementData];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
@@ -187,6 +202,7 @@ NSString *currentCharacteristic = nil;
 {
     settedRSSI = defaultRSSI;
     [discoveredPeripherals removeAllObjects];
+	[discoveredAdvertisements removeAllObjects];
     centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 }
 
@@ -194,6 +210,7 @@ NSString *currentCharacteristic = nil;
 {
     settedRSSI = RSSI;
     [discoveredPeripherals removeAllObjects];
+	[discoveredAdvertisements removeAllObjects];
     centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 }
 
@@ -205,7 +222,7 @@ NSString *currentCharacteristic = nil;
 //        for(CBPeripheral *p in self.peripherals){
 //            NSLog(@"peripheral.name:%@",p.name);
 //        }
-        [self.delegate BLEManagerReceiveAllPeripherals:self.discoveredPeripherals];
+        [self.delegate BLEManagerReceiveAllPeripherals:self.discoveredPeripherals andAdvertisements:self.discoveredAdvertisements];
         
     }else{
         NSLog(@"CM is Null!");

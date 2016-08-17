@@ -20,6 +20,7 @@
 {
 	UITableView *blueListTableview;
 	NSMutableArray *dataSource;
+	NSMutableArray *advertisementsDataSource;
 }
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -56,6 +57,7 @@
     self.edgesForExtendedLayout               = UIRectEdgeNone;
 
     dataSource                                = [[NSMutableArray alloc]init];//加入数据源
+	advertisementsDataSource                  = [[NSMutableArray alloc]init];//数据源
 
     blueListTableview                         = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
     blueListTableview.delegate                = self;
@@ -82,6 +84,22 @@
 	
 	CBPeripheral *p = dataSource[indexPath.row];//获取到设备
 	cell.textLabel.text = [NSString stringWithFormat:@"%@(%@)",p.name,[p.identifier.UUIDString substringToIndex:5]];//将设备名显示到cell
+	
+	
+	NSDictionary *ad = [advertisementsDataSource objectAtIndex:indexPath.row];
+	
+	//peripheral的显示名称,优先用kCBAdvDataLocalName的定义，若没有再使用peripheral name
+	NSString *localName;
+	if ([ad objectForKey:@"kCBAdvDataLocalName"]) {
+		localName = [NSString stringWithFormat:@"%@(%@)",[ad objectForKey:@"kCBAdvDataLocalName"],[p.identifier.UUIDString substringToIndex:5]];
+	}else{
+		localName = [NSString stringWithFormat:@"%@(%@)",p.name,[p.identifier.UUIDString substringToIndex:5]];
+	}
+	
+	cell.textLabel.text = localName;
+	
+	
+	
 	
 	return cell;
 }
@@ -114,10 +132,11 @@
 
 
 #pragma mark --接收到扫描到得所有设备
-- (void)BLEManagerReceiveAllPeripherals:(NSMutableArray *) peripherals {
+- (void)BLEManagerReceiveAllPeripherals:(NSMutableArray *) peripherals andAdvertisements:(NSMutableArray *)advertisements {
 
 	[SVProgressHUD dismiss];//结束转圈
 	[dataSource addObjectsFromArray:peripherals];//加入数据源
+	[advertisementsDataSource addObjectsFromArray:advertisements];
 	[blueListTableview reloadData];
 
 }
