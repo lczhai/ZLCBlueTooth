@@ -14,6 +14,11 @@
 		A4413C881D640A6B009D9A06 /* ZLCBlueTooth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4413C861D640A6B009D9A06 /* ZLCBlueTooth.xcdatamodeld */; };
 		A4413C8A1D640A6B009D9A06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4413C891D640A6B009D9A06 /* Assets.xcassets */; };
 		A4413C8D1D640A6B009D9A06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4413C8B1D640A6B009D9A06 /* LaunchScreen.storyboard */; };
+		A4413C971D640A83009D9A06 /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4413C961D640A83009D9A06 /* BLEManager.m */; };
+		A4413C9C1D641090009D9A06 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A4413C991D641090009D9A06 /* SVProgressHUD.bundle */; };
+		A4413C9D1D641090009D9A06 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A4413C9B1D641090009D9A06 /* SVProgressHUD.m */; };
+		A4413CA01D6410D5009D9A06 /* PeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4413C9F1D6410D5009D9A06 /* PeripheralViewController.m */; };
+		A4413CA41D644CF1009D9A06 /* ZYKeyboardUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A4413CA31D644CF1009D9A06 /* ZYKeyboardUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,15 @@
 		A4413C891D640A6B009D9A06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4413C8C1D640A6B009D9A06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4413C8E1D640A6B009D9A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4413C951D640A83009D9A06 /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
+		A4413C961D640A83009D9A06 /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
+		A4413C991D641090009D9A06 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		A4413C9A1D641090009D9A06 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		A4413C9B1D641090009D9A06 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A4413C9E1D6410D5009D9A06 /* PeripheralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralViewController.h; sourceTree = "<group>"; };
+		A4413C9F1D6410D5009D9A06 /* PeripheralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralViewController.m; sourceTree = "<group>"; };
+		A4413CA21D644CF1009D9A06 /* ZYKeyboardUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYKeyboardUtil.h; sourceTree = "<group>"; };
+		A4413CA31D644CF1009D9A06 /* ZYKeyboardUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYKeyboardUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +74,15 @@
 		A4413C791D640A6B009D9A06 /* ZLCBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
+				A4413CA11D644CF1009D9A06 /* Keyboard */,
+				A4413C981D641090009D9A06 /* SVProgressHUD */,
+				A4413C941D640A83009D9A06 /* Lib */,
 				A4413C7D1D640A6B009D9A06 /* AppDelegate.h */,
 				A4413C7E1D640A6B009D9A06 /* AppDelegate.m */,
 				A4413C801D640A6B009D9A06 /* ViewController.h */,
 				A4413C811D640A6B009D9A06 /* ViewController.m */,
+				A4413C9E1D6410D5009D9A06 /* PeripheralViewController.h */,
+				A4413C9F1D6410D5009D9A06 /* PeripheralViewController.m */,
 				A4413C831D640A6B009D9A06 /* Main.storyboard */,
 				A4413C891D640A6B009D9A06 /* Assets.xcassets */,
 				A4413C8B1D640A6B009D9A06 /* LaunchScreen.storyboard */,
@@ -80,6 +99,34 @@
 				A4413C7B1D640A6B009D9A06 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4413C941D640A83009D9A06 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				A4413C951D640A83009D9A06 /* BLEManager.h */,
+				A4413C961D640A83009D9A06 /* BLEManager.m */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		A4413C981D641090009D9A06 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A4413C991D641090009D9A06 /* SVProgressHUD.bundle */,
+				A4413C9A1D641090009D9A06 /* SVProgressHUD.h */,
+				A4413C9B1D641090009D9A06 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		A4413CA11D644CF1009D9A06 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A4413CA21D644CF1009D9A06 /* ZYKeyboardUtil.h */,
+				A4413CA31D644CF1009D9A06 /* ZYKeyboardUtil.m */,
+			);
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +160,7 @@
 				TargetAttributes = {
 					A4413C761D640A6B009D9A06 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = VCQGYVW289;
 					};
 				};
 			};
@@ -142,6 +190,7 @@
 				A4413C8D1D640A6B009D9A06 /* LaunchScreen.storyboard in Resources */,
 				A4413C8A1D640A6B009D9A06 /* Assets.xcassets in Resources */,
 				A4413C851D640A6B009D9A06 /* Main.storyboard in Resources */,
+				A4413C9C1D641090009D9A06 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,9 +202,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4413C881D640A6B009D9A06 /* ZLCBlueTooth.xcdatamodeld in Sources */,
+				A4413CA01D6410D5009D9A06 /* PeripheralViewController.m in Sources */,
 				A4413C821D640A6B009D9A06 /* ViewController.m in Sources */,
+				A4413C971D640A83009D9A06 /* BLEManager.m in Sources */,
 				A4413C7F1D640A6B009D9A06 /* AppDelegate.m in Sources */,
+				A4413CA41D644CF1009D9A06 /* ZYKeyboardUtil.m in Sources */,
 				A4413C7C1D640A6B009D9A06 /* main.m in Sources */,
+				A4413C9D1D641090009D9A06 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ZLCBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shining3d.ZLCBlueTooth;
@@ -278,6 +332,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ZLCBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = shining3d.ZLCBlueTooth;

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import <CoreBluetooth/CoreBluetooth.h>
+#import "BLEManager.h"
+#import "SVProgressHUD.h"
+#import "PeripheralViewController.h"
+@interface ViewController : UIViewController<BLEManagerDelegate>
 
 
 @end
