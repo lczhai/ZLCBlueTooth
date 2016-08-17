@@ -151,19 +151,34 @@
 	
 	
 	
-	UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(serviceTF.frame)+10, CGRectGetMaxY(serviceTF.frame)-15, 80, 80)];
-	[btn setTitle:@"发送" forState:UIControlStateNormal];
-	[btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	btn.backgroundColor = [UIColor greenColor];
-	[btn addTarget:self action:@selector(btn_Click:) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:btn];
+	UIButton *writeBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(serviceTF.frame)+10, CGRectGetMaxY(serviceTF.frame)-15, 80, 40)];
+	[writeBtn setTitle:@"写入" forState:UIControlStateNormal];
+	[writeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+	writeBtn.backgroundColor = [UIColor greenColor];
+	[writeBtn addTarget:self action:@selector(writebtn_Click:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:writeBtn];
+	
+	
+	
+	UIButton *readBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(serviceTF.frame)+10, CGRectGetMaxY(writeBtn.frame)+5, 80, 40)];
+	[readBtn setTitle:@"读取" forState:UIControlStateNormal];
+	[readBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+	readBtn.backgroundColor = [UIColor greenColor];
+	[readBtn addTarget:self action:@selector(read_Click:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:readBtn];
+	
 }
 #pragma mark -- 按钮点击事件
-- (void)btn_Click:(UIButton *)sender
+- (void)writebtn_Click:(UIButton *)sender
 {
 	[self.view endEditing:YES];
 	NSData *sendData  =  [contentTF.text dataUsingEncoding:NSUTF8StringEncoding];//数据
 	[[BLEManager sharedManager] setValue:sendData forServiceUUID:serviceTF.text andCharacteristicUUID:characteristicTF.text withPeripheral:periperal];//发送消息到设备
+}
+#pragma mark -- 按钮点击事件
+- (void)read_Click:(UIButton *)sender
+{
+	[[BLEManager sharedManager] readValueForServiceUUID:serviceTF.text andCharacteristicUUID:characteristicTF.text withPeripheral:periperal];
 }
 
 
@@ -225,13 +240,45 @@
 {
 	UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 	if (cell == nil) {
-		cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+		cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
 	}
 	
 	CBService *service = thisServices[indexPath.section];//获取到服务
 	CBCharacteristic *characteristic = service.characteristics[indexPath.row];
 	cell.textLabel.text = characteristic.UUID.UUIDString;//将设备名显示到cell
 	[cell.textLabel sizeToFit];
+
+	
+	//获取读写通知特性
+	CBCharacteristicProperties properties = characteristic.properties;
+	cell.detailTextLabel.text = @"";
+	if (properties & CBCharacteristicPropertyBroadcast) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | Broadcast"];
+	}
+	if (properties & CBCharacteristicPropertyRead) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | Read"];
+	}
+	if (properties & CBCharacteristicPropertyWriteWithoutResponse) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | WriteWithoutResponse"];
+	}
+	if (properties & CBCharacteristicPropertyWrite) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | Write"];
+	}
+	if (properties & CBCharacteristicPropertyNotify) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | Notify"];
+	}
+	if (properties & CBCharacteristicPropertyIndicate) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | Indicate"];
+	}
+	if (properties & CBCharacteristicPropertyAuthenticatedSignedWrites) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | AuthenticatedSignedWrites"];
+	}
+	if (properties & CBCharacteristicPropertyExtendedProperties) {
+		cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:@" | ExtendedProperties"];
+	}
+
+	
+	
 	
 	return cell;
 }
