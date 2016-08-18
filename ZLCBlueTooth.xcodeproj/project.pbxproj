@@ -161,6 +161,11 @@
 					A4413C761D640A6B009D9A06 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = VCQGYVW289;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -359,6 +364,7 @@
 				A4413C931D640A6B009D9A06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
