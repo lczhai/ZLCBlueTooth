@@ -130,6 +130,7 @@
 	contentTF.layer.borderWidth = 1;
 	contentTF.layer.borderColor = [UIColor grayColor].CGColor;
 	contentTF.placeholder = @"输入发送内容";
+    contentTF.text = @"55AA01000100000102";
 	[self.view addSubview:contentTF];
 	
 	
@@ -181,9 +182,15 @@
 - (void)writebtn_Click:(UIButton *)sender
 {
 	
+//    NSData *valueData = [self convertHexStrToString:contentTF.text];
+//    NSLog(@"value : %@",valueData);
+    
 	
 	[self.view endEditing:YES];
 	NSData *sendData  =  [contentTF.text dataUsingEncoding:NSUTF8StringEncoding];//数据
+    
+    
+    
 	[[BLEManager sharedManager] setValue:sendData forServiceUUID:serviceTF.text andCharacteristicUUID:characteristicTF.text withPeripheral:periperal];//发送消息到设备
 }
 #pragma mark -- 按钮点击事件
@@ -314,5 +321,42 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
 	[self.view endEditing:YES];
+}
+
+
+
+
+
+
+
+- (NSData *)convertHexStrToString:(NSString *)str {
+    if (!str || [str length] == 0) {
+        return nil;
+    }
+    
+    NSMutableData *hexData = [[NSMutableData alloc] initWithCapacity:8];
+    NSRange range;
+    if ([str length] % 2 == 0) {
+        range = NSMakeRange(0, 2);
+    } else {
+        range = NSMakeRange(0, 1);
+    }
+    
+    
+    for (NSInteger i = range.location; i < [str length]; i += 2) {
+        unsigned int anInt;
+        NSString *hexCharStr = [str substringWithRange:range];
+        NSScanner *scanner = [[NSScanner alloc] initWithString:hexCharStr];
+        
+        [scanner scanHexInt:&anInt];
+        NSData *entity = [[NSData alloc] initWithBytes:&anInt length:1];
+        [hexData appendData:entity];
+        
+        range.location += range.length;
+        range.length = 2;
+    }
+    
+    NSString *string = [[NSString alloc]initWithData:hexData encoding:NSUTF8StringEncoding];
+    return hexData;
 }
 @end
