@@ -81,6 +81,7 @@
 {
 	return dataSource.count;
 }
+//设置tableview cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -103,12 +104,9 @@
 	}
 	
 	cell.textLabel.text = localName;
-	
-	
-	
-	
 	return cell;
 }
+
 
 #pragma mark-- tableview点击连接事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
