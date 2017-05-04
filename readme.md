@@ -16,7 +16,6 @@
 备注：每一个蓝牙设备会有很多服务，每个服务又有很多特征（说属性也罢），故与蓝牙设备进行交互时，需根据蓝牙设备的udid进行通信，为此在详情页拿到所有的udid信息以方便选择（直接点击会自动填充），至于发送的指令内容及需要向哪一个udid发送内容则需与蓝牙设备的开发者进行约定。   
 
 
-![scan.png](http://upload-images.jianshu.io/upload_images/2312430-80b72b208d5afb4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![detail_meitu_0.jpg](http://upload-images.jianshu.io/upload_images/2312430-5ec9c1b082a9fdeb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![detail.png](http://upload-images.jianshu.io/upload_images/2312430-1a0f8b4483622d18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
