@@ -160,7 +160,7 @@
 				TargetAttributes = {
 					A4413C761D640A6B009D9A06 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = DMH6JG3RCC;
+						DevelopmentTeam = JU79U97ECS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -327,7 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DMH6JG3RCC;
+				DEVELOPMENT_TEAM = JU79U97ECS;
 				INFOPLIST_FILE = ZLCBlueTooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -343,7 +343,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DMH6JG3RCC;
+				DEVELOPMENT_TEAM = JU79U97ECS;
 				INFOPLIST_FILE = ZLCBlueTooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

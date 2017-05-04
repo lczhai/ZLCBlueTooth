@@ -49,6 +49,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [SVProgressHUD dismiss];
 	[[BLEManager sharedManager] disconnectPeripheral:periperal];//断开蓝牙
 }
 
@@ -126,7 +127,7 @@
 	contentTF.layer.borderWidth = 1;
 	contentTF.layer.borderColor = [UIColor grayColor].CGColor;
 	contentTF.placeholder = @"输入发送内容";
-    contentTF.text = @"55AA01000100000102";
+    contentTF.text = @"";
 	[self.view addSubview:contentTF];
 	
 	
@@ -355,4 +356,9 @@
     NSString *string = [[NSString alloc]initWithData:hexData encoding:NSUTF8StringEncoding];
     return hexData;
 }
+
+
+
+
+
 @end
