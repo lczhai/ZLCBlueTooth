@@ -111,6 +111,8 @@
 #pragma mark-- tableview点击连接事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [SVProgressHUD dismiss];//结束转圈
+    
 	NSInteger index = indexPath.row;
 	if(index == -1){
 		[[BLEManager sharedManager] stopScanningForPeripherals];//停止扫描

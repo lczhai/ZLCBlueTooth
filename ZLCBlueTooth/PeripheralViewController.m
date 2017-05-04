@@ -16,10 +16,6 @@
 {
 	NSMutableArray *thisServices;
 	UITableView    *thisServiceTableView;
-	
-	
-	
-	
 }
 
 
